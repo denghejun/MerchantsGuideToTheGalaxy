@@ -55,7 +55,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
     <Content Include="data.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
