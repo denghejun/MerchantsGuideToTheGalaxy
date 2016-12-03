@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuideToTheGalaxy.Tests.Commands
+namespace GuideToTheGalaxy.Tests
 {
     [TestFixture]
     public class HowManyCommand
@@ -22,7 +22,7 @@ namespace GuideToTheGalaxy.Tests.Commands
             DirectiveProxy<UnitPriceCommandDirective>.Create("glob glob Silver is 34 Credits").Command.Execute();
             var response = DirectiveProxy<HowManyCommandDirective>.Create("how many Credits is glob prok Silver ?").Command.Execute();
 
-            Assert.That(response?.ToString() == "glob prok Silver is 68 Credits");
+            Assert.That(response?.ToString(), Is.EqualTo("glob prok Silver is 68 Credits"));
         }
     }
 }

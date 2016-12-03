@@ -2,7 +2,7 @@
 using GuideToTheGalaxy.Core;
 using NUnit.Framework;
 
-namespace GuideToTheGalaxy.Tests.Commands
+namespace GuideToTheGalaxy.Tests
 {
     [TestFixture]
     public class HowMuchCommandTest
@@ -16,7 +16,7 @@ namespace GuideToTheGalaxy.Tests.Commands
             DirectiveProxy<AliasCommandDirective>.Create("tegj is L").Command.Execute();
             var response = DirectiveProxy<HowMuchCommandDirective>.Create("how much is pish tegj glob glob ?").Command.Execute();
 
-            Assert.That(response?.ToString() == "pish tegj glob glob is 42");
+            Assert.That(response?.ToString(), Is.EqualTo("pish tegj glob glob is 42"));
         }
     }
 }

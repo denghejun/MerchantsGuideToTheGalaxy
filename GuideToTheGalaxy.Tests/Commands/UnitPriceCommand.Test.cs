@@ -2,7 +2,7 @@
 using GuideToTheGalaxy.Core;
 using NUnit.Framework;
 
-namespace GuideToTheGalaxy.Tests.Commands
+namespace GuideToTheGalaxy.Tests
 {
     [TestFixture]
     public class UnitPriceCommandTest
@@ -16,8 +16,8 @@ namespace GuideToTheGalaxy.Tests.Commands
             DirectiveProxy<AliasCommandDirective>.Create("tegj is L").Command.Execute();
             var unitPrice = DirectiveProxy<UnitPriceCommandDirective>.Create("glob glob Silver is 34 Credits").Command.Execute();
 
-            Assert.That((decimal)unitPrice == 17);
-            Assert.That(UnitPriceCommand.GetUnitPriceByProductName("Silver") == 17);
+            Assert.That((decimal)unitPrice, Is.EqualTo(17));
+            Assert.That(UnitPriceCommand.GetUnitPriceByProductName("Silver"), Is.EqualTo(17));
         }
     }
 }
