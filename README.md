@@ -1,5 +1,5 @@
 ## What's This
- This `.sln` is a homework from TW.
+ This `.sln` is a homework about Guide To The Galaxy!!
 
 ## How To Run
 #### Only 2 Projects Can Run By Press `F5` Directly
