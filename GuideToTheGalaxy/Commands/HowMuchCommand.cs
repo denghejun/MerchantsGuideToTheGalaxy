@@ -53,10 +53,9 @@ namespace GuideToTheGalaxy.Commands
             get
             {
                 var calculator = new RomanCalculator();
-                foreach (var alias in this.RomainNumberAlias)
-                {
-                    calculator.Add(AliasCommand.GetRomanNumberByAlias(alias));
-                }
+                calculator.Add(RomanNumber.I);
+                calculator.Add(RomanNumber.X);
+                var value = calculator.Value; //value will be IX = 9
 
                 return calculator;
             }
