@@ -2,7 +2,7 @@
  This `.sln` is a homework about Guide To The Galaxy!!
  
 ## Where Is The Source
-* All of source codes already push to GitHub:  [https://github.com/denghejun/MerchantsGuideToTheGalaxy.git](https://github.com/denghejun/MerchantsGuideToTheGalaxy.git).
+All of source codes already push to GitHub:  [https://github.com/denghejun/MerchantsGuideToTheGalaxy.git](https://github.com/denghejun/MerchantsGuideToTheGalaxy.git).
 
 ## How To Run
 #### Only 2 Projects Can Run By Press `F5` Directly in `VisualStudio IDE`
