@@ -29,7 +29,7 @@ Contains all `Roman Codes` and Rules. And has a `RomanCaculator`, it was used to
 ```
 
 ###### GuideToTheGalaxy.Commands
-Contains many directives which can execute its command to solve the user input. one of samples like below:
+Contains many `micro directives` which can execute its command to solve the user input. one of test samples like below:
 ```
 DirectiveProxy<AliasCommandDirective>.Create("glob is I").Command.Execute();
 DirectiveProxy<AliasCommandDirective>.Create("prok is V").Command.Execute();
