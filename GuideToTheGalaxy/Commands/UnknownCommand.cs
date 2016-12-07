@@ -22,7 +22,7 @@ namespace GuideToTheGalaxy.Commands
 
         public override object Execute()
         {
-            return "I have no idea what you are talking about";
+            return this._directive.Message;
         }
     }
 
@@ -34,6 +34,14 @@ namespace GuideToTheGalaxy.Commands
     {
         public UnknownCommandDirective(string content) : base(content)
         {
+        }
+
+        public string Message
+        {
+            get
+            {
+                return "I have no idea what you are talking about";
+            }
         }
 
         public override UnknownCommand Command

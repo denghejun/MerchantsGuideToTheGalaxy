@@ -47,15 +47,23 @@ To define a new `command` and `directive` like below：
 
         public override object Execute()
         {
-            return "I have no idea what you are talking about";
+            return this._directive.Message;
         }
     }
 ```
 ```
-  public class UnknownCommandDirective : CommandDirective<UnknownCommand>
+    public class UnknownCommandDirective : CommandDirective<UnknownCommand>
     {
         public UnknownCommandDirective(string content) : base(content)
         {
+        }
+
+        public string Message
+        {
+            get
+            {
+                return "I have no idea what you are talking about";
+            }
         }
 
         public override UnknownCommand Command
@@ -70,7 +78,7 @@ To define a new `command` and `directive` like below：
 
 And you can use `directive` like below:
 ```
-var result = DirectiveProxy<UnknownCommandDirective>.Create(content).Command.Execute();
+var result = DirectiveProxy<UnknownCommandDirective>.Create("whatever you want").Command.Execute();
 ```
 
 one of test samples like below:
