@@ -29,7 +29,51 @@ Contains all `Roman Codes` and Rules. And has a `RomanCaculator`, it was used to
 ```
 
 ###### GuideToTheGalaxy.Commands
-Contains many `micro directives` which can execute its command to solve the user input. one of test samples like below:
+Contains many `micro directives` which can execute its command to solve the user input.
+
+* Each static method of `command` as a public API to communicate with other `command`.
+* The purpose of `directive` & `command` was separate `Action` from `Data`.
+* The inherit of command means which `directive` will be supported by current `command`.
+* The inherit of directive means which `Command` can be executed by current `directive`.
+
+To define a new `command` and `directive` like below：
+```
+    public class UnknownCommand : Command<UnknownCommandDirective>
+    {
+        public UnknownCommand(UnknownCommandDirective directive) : base(directive)
+        {
+
+        }
+
+        public override object Execute()
+        {
+            return "I have no idea what you are talking about";
+        }
+    }
+```
+```
+  public class UnknownCommandDirective : CommandDirective<UnknownCommand>
+    {
+        public UnknownCommandDirective(string content) : base(content)
+        {
+        }
+
+        public override UnknownCommand Command
+        {
+            get
+            {
+                return new UnknownCommand(this);
+            }
+        }
+    }
+```
+
+And you can use `directive` like below:
+```
+var result = DirectiveProxy<UnknownCommandDirective>.Create(content).Command.Execute();
+```
+
+one of test samples like below:
 ```
 DirectiveProxy<AliasCommandDirective>.Create("glob is I").Command.Execute();
 DirectiveProxy<AliasCommandDirective>.Create("prok is V").Command.Execute();
@@ -41,7 +85,3 @@ var response = DirectiveProxy<HowManyCommandDirective>.Create("how many Credits 
 Assert.That(response?.ToString(), Is.EqualTo("glob prok Silver is 68 Credits"));
             
 ```
-* Each static method of `command` as a public API to communicate with other `command`.
-* The purpose of `directive` & `command` was separate `Action` from `Data`.
-* The inherit of command means which `directive` will be supported by current `command`.
-* The inherit of directive means which `Command` can be executed by current `directive`.
