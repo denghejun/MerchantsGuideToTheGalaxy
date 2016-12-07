@@ -41,3 +41,7 @@ var response = DirectiveProxy<HowManyCommandDirective>.Create("how many Credits 
 Assert.That(response?.ToString(), Is.EqualTo("glob prok Silver is 68 Credits"));
             
 ```
+* Each static method of `command` as a public API to communicate with other `command`.
+* The purpose of `directive` & `command` was separate `Action` from `Data`.
+* The inherit of command means which `directive` will be supported by current `command`.
+* The inherit of directive means which `Command` can be executed by current `directive`.
