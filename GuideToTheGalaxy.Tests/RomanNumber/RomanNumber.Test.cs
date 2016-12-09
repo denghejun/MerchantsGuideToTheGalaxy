@@ -25,13 +25,13 @@ namespace GuideToTheGalaxy.Tests
         [Test]
         public void CalculateFailed()
         {
-            Assert.Throws<Exception>(() =>
+            Assert.That(() =>
             {
                 var calculator = new RomanCalculator();
                 calculator.Add(RomanNumber.I);
                 calculator.Add(RomanNumber.M);
                 var value = calculator.Value;
-            });
+            }, Throws.Exception.With.Message.EqualTo($"{RomanNumber.I.Symbol} can be only subtracted from {SymbolEnum.V} {SymbolEnum.X}."));
         }
     }
 }
