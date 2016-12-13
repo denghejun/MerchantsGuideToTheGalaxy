@@ -13,19 +13,7 @@ namespace GuideConsole
     {
         static void Main(string[] args)
         {
-            var responses = GalaxyGuider.SolveFromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.txt"));
-            if (!responses.IsNullOrEmpty())
-            {
-                foreach (var response in responses)
-                {
-                    if (!response.Message.IsNullOrWhiteSpace())
-                    {
-                        Console.WriteLine(response.Message);
-                    }
-                }
-            }
-
-            Console.ReadKey();
+            GuideMenu.GuideMenu.Show();
         }
     }
 }
