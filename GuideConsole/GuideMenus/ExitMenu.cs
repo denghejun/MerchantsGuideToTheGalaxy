@@ -8,7 +8,7 @@ namespace GuideConsole.GuideMenus
         {
             get
             {
-                return "Input 'exit' to quit";
+                return "Exit";
             }
         }
 
