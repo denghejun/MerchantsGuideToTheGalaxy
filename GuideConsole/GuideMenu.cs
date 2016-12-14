@@ -45,6 +45,13 @@ namespace GuideConsole
             }
         }
 
+        private static void WaitAndClearScreen()
+        {
+            Console.WriteLine(Environment.NewLine + "Press any key to continue ...");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
         public static void Show()
         {
             while (true)
@@ -52,6 +59,7 @@ namespace GuideConsole
                 GuideMenu selectedMenu = null;
                 if (!TryGetSelectedMenu(out selectedMenu))
                 {
+                    WaitAndClearScreen();
                     continue;
                 }
 
@@ -61,9 +69,7 @@ namespace GuideConsole
                 {
                 }
 
-                Console.WriteLine(Environment.NewLine + "Press any key to continue ...");
-                Console.ReadKey();
-                Console.Clear();
+                WaitAndClearScreen();
             }
         }
 
