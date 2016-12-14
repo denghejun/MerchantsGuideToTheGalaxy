@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GuideMenu\ExitMenu.cs" />
-    <Compile Include="GuideMenu\GuideMenu.cs" />
-    <Compile Include="GuideMenu\InputDataFromConsoleMenu.cs" />
-    <Compile Include="GuideMenu\InputDataFromFileMenu.cs" />
+    <Compile Include="GuideMenus\ExitMenu.cs" />
+    <Compile Include="GuideMenu.cs" />
+    <Compile Include="GuideMenus\InputDataFromConsoleMenu.cs" />
+    <Compile Include="GuideMenus\InputDataFromFileMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

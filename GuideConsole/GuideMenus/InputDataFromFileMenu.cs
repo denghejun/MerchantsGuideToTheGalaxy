@@ -1,12 +1,8 @@
 ﻿using dotNetExt;
 using GuideToTheGalaxy;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GuideConsole.GuideMenu
+namespace GuideConsole.GuideMenus
 {
     public class InputDataFromFileMenu : GuideMenu
     {

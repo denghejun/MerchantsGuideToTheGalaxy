@@ -1,22 +1,12 @@
 ﻿using dotNetExt;
-using GuideToTheGalaxy;
+using GuideConsole.GuideMenus;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GuideConsole.GuideMenu
+namespace GuideConsole
 {
     public abstract class GuideMenu
     {
-        public int ID { get; set; }
-        public virtual string Tips { get; }
-        public abstract string Content { get; }
-        public abstract bool Do(string input);
-
         private static bool TryGetSelectedMenu(out GuideMenu selectedMenu)
         {
             var menus = new GuideMenu[] { new InputDataFromFileMenu(), new InputDataFromConsoleMenu(), new ExitMenu() };
@@ -25,8 +15,17 @@ namespace GuideConsole.GuideMenu
             var input = Console.ReadLine();
             int id;
             selectedMenu = int.TryParse(input, out id) && id <= menus.Count() ? menus[id - 1] : null;
-            return selectedMenu != null;
+            if (selectedMenu == null)
+            {
+                Console.WriteLine("Please input valid menu number.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
+
         private static string ToContents(params GuideMenu[] menus)
         {
             if (menus.IsNullOrEmpty())
@@ -45,6 +44,7 @@ namespace GuideConsole.GuideMenu
                 return contents;
             }
         }
+
         public static void Show()
         {
             while (true)
@@ -52,17 +52,27 @@ namespace GuideConsole.GuideMenu
                 GuideMenu selectedMenu = null;
                 if (!TryGetSelectedMenu(out selectedMenu))
                 {
-                    Console.WriteLine("Please input valid menu number.");
                     continue;
                 }
 
+                Console.Clear();
                 Console.WriteLine(selectedMenu.Tips);
                 while (!selectedMenu.Do(Console.ReadLine()))
                 {
                 }
 
-                Console.WriteLine(Environment.NewLine);
+                Console.WriteLine(Environment.NewLine + "Press any key to continue ...");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
+
+        public int ID { get; set; }
+
+        public virtual string Tips { get; }
+
+        public abstract string Content { get; }
+
+        public abstract bool Do(string input);
     }
 }
