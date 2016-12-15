@@ -8,12 +8,6 @@ using System.Threading.Tasks;
 
 namespace GuideToTheGalaxy.Commands
 {
-    /// <summary>
-    /// 1. UnitPrice Command
-    /// 2. each static method as a Public API provider of current command.
-    /// 3. the purpose of directive was separate Action from Data.
-    /// 4. the inherit means Which Directive will be supported by current command.
-    /// </summary>
     public class UnitPriceCommand : Command<UnitPriceCommandDirective>
     {
         public UnitPriceCommand(UnitPriceCommandDirective directive) : base(directive)
@@ -43,10 +37,6 @@ namespace GuideToTheGalaxy.Commands
         }
     }
 
-    /// <summary>
-    /// 1. UnitPrice Command Directive.
-    /// 2. the inherit means Which Command can be executed by current directive.
-    /// </summary>
     public class UnitPriceCommandDirective : CommandDirective<UnitPriceCommand>
     {
         public UnitPriceCommandDirective(string content) : base(content)

@@ -8,12 +8,6 @@ using System.Threading.Tasks;
 
 namespace GuideToTheGalaxy.Commands
 {
-    /// <summary>
-    /// 1. HowMany Command
-    /// 2. each static method as a Public API provider of current command.
-    /// 3. the purpose of directive was separate Action from Data.
-    /// 4. the inherit means Which Directive will be supported by current command.
-    /// </summary>
     public class HowManyCommand : Command<HowManyCommandDirective>
     {
         public HowManyCommand(HowManyCommandDirective directive) : base(directive)
@@ -27,10 +21,6 @@ namespace GuideToTheGalaxy.Commands
         }
     }
 
-    /// <summary>
-    /// 1. HowMany Command Directive.
-    /// 2. the inherit means Which Command can be executed by current directive.
-    /// </summary>
     public class HowManyCommandDirective : CommandDirective<HowManyCommand>
     {
         public HowManyCommandDirective(string content) : base(content)
