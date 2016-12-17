@@ -15,7 +15,7 @@ namespace GuideToTheGalaxy
 {
     public static class GalaxyGuider
     {
-        private static readonly List<ICommandStrategy> CommandStrategies = new List<ICommandStrategy>()
+        private static readonly ICommandStrategy[] CommandStrategies = new ICommandStrategy[]
         {
             new AliasCommandStrategy(),
             new UnitPriceCommandStrategy(),
@@ -36,23 +36,14 @@ namespace GuideToTheGalaxy
             }
         }
 
-        private static List<GuideResponse> Solve(List<string> contents)
+        private static GuideResponse[] Solve(string[] contents)
         {
-            return contents?.Select(o => Solve(o)).ToList();
+            return contents?.Select(o => Solve(o)).ToArray();
         }
 
-        public static List<GuideResponse> SolveFromFile(string path)
+        public static GuideResponse[] SolveFromFile(string path)
         {
-            if (!File.Exists(path))
-            {
-                return new List<GuideResponse>()
-                {
-                    new GuideResponse($"{path} NOT exists.")
-                };
-            };
-
-            var contentLines = File.ReadLines(path);
-            return Solve(contentLines?.ToList());
+            return File.Exists(path) ? Solve(File.ReadAllLines(path)) : new[] { new GuideResponse($"{path} NOT exists.") };
         }
     }
 }
