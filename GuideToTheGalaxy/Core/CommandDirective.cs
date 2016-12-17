@@ -11,10 +11,15 @@ namespace GuideToTheGalaxy.Core
         public CommandDirective(string content)
         {
             this.Content = content;
+            this.Validate(content);
         }
 
         public string Content { get; private set; }
 
+        protected virtual void Validate(string content)
+        {
+
+        }
     }
 
     public abstract class CommandDirective<TCommand> : CommandDirective where TCommand : Command

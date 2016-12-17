@@ -9,61 +9,31 @@ using dotNetExt;
 using GuideToTheGalaxy.Core;
 using GuideToTheGalaxy.Commands;
 using System.IO;
+using GuideToTheGalaxy.Strategies;
 
 namespace GuideToTheGalaxy
 {
     public static class GalaxyGuider
     {
+        private static readonly List<ICommandStrategy> CommandStrategies = new List<ICommandStrategy>()
+        {
+            new AliasCommandStrategy(),
+            new UnitPriceCommandStrategy(),
+            new HowMuchCommandStrategy(),
+            new HowManyCommandStrategy(),
+            new UnknownCommandStrategy()
+        };
+
         private static GuideResponse Solve(string content)
         {
-            content = content?.Trim();
-            if (content.IsNullOrWhiteSpace())
-            {
-                return GuideResponse.Empty;
-            }
-
-            var splitedDesc = content.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
-
             try
             {
-                if (splitedDesc.Count == 3 && RomanNumber.RomanNumbers.Contains(splitedDesc.Last()))
-                {
-                    DirectiveProxy<AliasCommandDirective>.Create(content).Command.Execute()?.ToString();
-                    return GuideResponse.Empty;
-                }
-
-                if (splitedDesc.Last().Equals("Credits", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    DirectiveProxy<UnitPriceCommandDirective>.Create(content).Command.Execute()?.ToString();
-                    return GuideResponse.Empty;
-                }
-
-                if (content.StartsWith("how much", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return new GuideResponse()
-                    {
-                        Message = DirectiveProxy<HowMuchCommandDirective>.Create(content).Command.Execute()?.ToString()
-                    };
-                }
-
-
-                if (content.StartsWith("how many", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return new GuideResponse()
-                    {
-                        Message = DirectiveProxy<HowManyCommandDirective>.Create(content).Command.Execute()?.ToString()
-                    };
-                }
-
+                return CommandStrategies.FirstOrDefault(o => o.CanExecute(content))?.Execute(content) ?? GuideResponse.Empty;
             }
             catch
             {
+                return GuideResponse.Empty;
             }
-
-            return new GuideResponse()
-            {
-                Message = DirectiveProxy<UnknownCommandDirective>.Create(content).Command.Execute()?.ToString()
-            };
         }
 
         private static List<GuideResponse> Solve(List<string> contents)

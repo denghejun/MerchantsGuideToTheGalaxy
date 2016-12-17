@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace GuideToTheGalaxy.Commands
@@ -27,10 +28,21 @@ namespace GuideToTheGalaxy.Commands
         {
         }
 
+        protected override void Validate(string content)
+        {
+            if (!new Regex(@"^how many .+\?$").IsMatch(content))
+            {
+                throw new Exception("valid input.");
+            }
+        }
+
         public string ProductName
         {
             get
             {
+                //how many Credits is glob prok Silver ?
+                var regex = new Regex(@"^how many .+\? \b(?<ProductName>\\w*)\b?$");
+                var g = regex.Match(this.Content);
                 var splits = this.Content.TrimEnd('?').Trim().Split(' ').ToList();
                 return splits.Last();
             }

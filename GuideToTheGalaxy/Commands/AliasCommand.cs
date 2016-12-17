@@ -40,6 +40,11 @@ namespace GuideToTheGalaxy.Commands
         {
             return AliasCommand.AliasNumbers.FirstOrDefault(o => o.Alias.Equals(alias?.Trim(), StringComparison.InvariantCultureIgnoreCase));
         }
+
+        public static List<RomanNumber> GetAllRomainNumbers()
+        {
+            return AliasNumbers;
+        }
     }
 
     public class AliasCommandDirective : CommandDirective<AliasCommand>

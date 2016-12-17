@@ -55,6 +55,12 @@
     <Compile Include="GalaxyGuider.cs" />
     <Compile Include="Models\GuideResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\AliasCommandStrategy.cs" />
+    <Compile Include="Strategies\HowManyCommandStrategy.cs" />
+    <Compile Include="Strategies\HowMuchCommandStrategy.cs" />
+    <Compile Include="Strategies\ICommandStrategy.cs" />
+    <Compile Include="Strategies\UnitPriceCommandStrategy.cs" />
+    <Compile Include="Strategies\UnknownCommandStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RomanNumerals\RomanNumerals.csproj">
