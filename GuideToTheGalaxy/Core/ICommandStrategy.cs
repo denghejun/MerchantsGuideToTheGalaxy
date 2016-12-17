@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuideToTheGalaxy.Strategies
+namespace GuideToTheGalaxy.Core
 {
     public interface ICommandStrategy
     {

@@ -58,7 +58,7 @@
     <Compile Include="Strategies\AliasCommandStrategy.cs" />
     <Compile Include="Strategies\HowManyCommandStrategy.cs" />
     <Compile Include="Strategies\HowMuchCommandStrategy.cs" />
-    <Compile Include="Strategies\ICommandStrategy.cs" />
+    <Compile Include="Core\ICommandStrategy.cs" />
     <Compile Include="Strategies\UnitPriceCommandStrategy.cs" />
     <Compile Include="Strategies\UnknownCommandStrategy.cs" />
   </ItemGroup>
