@@ -1,4 +1,5 @@
 ﻿using GuideToTheGalaxy.Core;
+using GuideToTheGalaxy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace GuideToTheGalaxy.Commands
 
         public override object Execute()
         {
-            return this._directive.Message;
+            return GuideResponse.Unknown.Message;
         }
     }
 
@@ -24,14 +25,6 @@ namespace GuideToTheGalaxy.Commands
     {
         public UnknownCommandDirective(string content) : base(content)
         {
-        }
-
-        public string Message
-        {
-            get
-            {
-                return "I have no idea what you are talking about";
-            }
         }
 
         public override UnknownCommand Command

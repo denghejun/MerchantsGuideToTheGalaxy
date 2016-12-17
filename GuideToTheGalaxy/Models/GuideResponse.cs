@@ -27,5 +27,13 @@ namespace GuideToTheGalaxy.Models
                 return new GuideResponse() { Message = string.Empty };
             }
         }
+
+        public static GuideResponse Unknown
+        {
+            get
+            {
+                return new GuideResponse() { Message = "I have no idea what you are talking about" };
+            }
+        }
     }
 }

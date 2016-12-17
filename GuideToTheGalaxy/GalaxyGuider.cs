@@ -28,11 +28,11 @@ namespace GuideToTheGalaxy
         {
             try
             {
-                return CommandStrategies.FirstOrDefault(o => o.CanExecute(content))?.Execute(content) ?? GuideResponse.Empty;
+                return CommandStrategies.FirstOrDefault(o => o.CanExecute(content))?.Execute(content) ?? GuideResponse.Unknown;
             }
             catch
             {
-                return GuideResponse.Empty;
+                return GuideResponse.Unknown;
             }
         }
 
