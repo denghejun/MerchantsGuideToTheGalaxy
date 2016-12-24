@@ -11,7 +11,10 @@ namespace GuideConsole
         {
             var menus = new GuideMenu[] { new InputDataFromFileMenu(), new InputDataFromConsoleMenu(), new ExitMenu() };
             var contents = ToContents(menus);
+            Console.WriteLine("--------------------- Guide To Galaxy ----------------------");
             Console.WriteLine(contents);
+            Console.WriteLine("-------------------------------------------------------------");
+
             var input = Console.ReadLine();
             int id;
             selectedMenu = int.TryParse(input, out id) && id <= menus.Count() ? menus[id - 1] : null;
@@ -48,6 +51,7 @@ namespace GuideConsole
         private static void WaitAndClearScreen()
         {
             Console.WriteLine(Environment.NewLine + "Press any key to continue ...");
+            Console.WriteLine(".............................................................");
             Console.ReadKey();
             Console.Clear();
         }
@@ -65,6 +69,7 @@ namespace GuideConsole
 
                 Console.Clear();
                 Console.WriteLine(selectedMenu.Tips);
+                Console.WriteLine("-------------------------------------------------------------");
                 while (!selectedMenu.Do(Console.ReadLine()))
                 {
                 }
