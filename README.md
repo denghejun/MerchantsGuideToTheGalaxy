@@ -1,5 +1,6 @@
 ## What's This
  This `.sln` is a homework about Guide To The Galaxy!!
+ See also:[GuideToTheGalaxy](http://denghejun.github.io/Pages/GuideToTheGalaxy.html)
  
 ## Where Is The Source
 All of source codes already push to GitHub:  [https://github.com/denghejun/MerchantsGuideToTheGalaxy.git](https://github.com/denghejun/MerchantsGuideToTheGalaxy.git).
